@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1e3163;
+}
+
+/* html {
+  font-size: 62.5%;
+  font-family: "DM Sans", sans-serif; 
+} 
+ */
+.header {
+  margin: 2em 1em 1em 1em;
+}
+
+.header-title {
+  margin: 0;
+  color: aliceblue;
+  font-size: clamp(30px, 10vw, 55px);
+}
+
+.add-buton {
+  background-color: whitesmoke;
+  border: none;
+  opacity: 80%;
+  border-radius: 50px;
+  padding: 0.3em 0.65em;
+  font-size: 24px;
+  font-weight: 800;
+  justify-content: center;
+}
+.add-buton:hover {
+  cursor: pointer;
+}
+.reminders {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.reminders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.reminders-list-element {
+  list-style: none;
+  background-color: #002366;
+  border-radius: 5px;
+  color: white;
+  border: solid 1px white;
+  padding: clamp(5px, 1vw, 25px);
+  width: clamp(110px, 4vw, 300px);
+}
