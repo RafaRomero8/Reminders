@@ -44,6 +44,7 @@ function App() {
     <header className='header'>
       <h1 className='header-title'>My remenders</h1>
       <button className='add-buton' onClick={add}>+</button>
+      <button className='add-buton' onClick={add}>-</button>
       </header>
     <main className='reminders'>
       <ul className='reminders-list'>
