@@ -15,16 +15,11 @@ export const slice = createSlice({
       list,
     }),
 
-    // addReminders: (state,{payload:list})=>({
-    //   ...state,
-    //   state.length +1})
-    //setReminders([...reminders,{title:`Reminders ${reminders.length + 1}`,id:reminders.length + 1}])
-    
   },
   
 });
 
-export const { setReminders,addReminders } = slice.actions;
+export const { setReminders} = slice.actions;
 //mandamos a llamar nuestro funcion(reducer)  setReminders para ocupar en dispach
 
 export default slice.reducer;//exportar como default nuestro reducer para que la ocupa para crear nuestra store de toda la aplicacion
