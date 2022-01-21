@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { slice } from "../Services/reminders.reducer";
 import reducer from "./reducers";
 //reducer tiene adentro reminders del archivo reducer.jsx
 

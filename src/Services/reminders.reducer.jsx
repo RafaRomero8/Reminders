@@ -16,10 +16,27 @@ export const slice = createSlice({
     }),
 
   },
+  addTodo:(state,action)=>{
+    //setReminders([...reminders,{title:`Reminders ${reminders.length + 1}`,id:reminders.length + 1}])
+   //console.log({reminders})
+   return [...state,action.payload]
+   //return {...state,add:[action.payload]}
+ },
+ deleteTodo:(state,action)=>{
+  return state.filter(todo => todo.id !== action.payload)
+ },
+ completeToDo:(state,action)=>{
+
+  return state.map( todo => (todo.id === action.payload)
+    ?{...todo,done: !todo.done}
+    : todo
+)
+ }
+
   
 });
 
-export const { setReminders} = slice.actions;
+export const { setReminders,addTodo,deleteTodo,completeToDo} = slice.actions;
 //mandamos a llamar nuestro funcion(reducer)  setReminders para ocupar en dispach
 
 export default slice.reducer;//exportar como default nuestro reducer para que la ocupa para crear nuestra store de toda la aplicacion
