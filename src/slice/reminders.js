@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const slice = createSlice({
   name: "reminders", //objeto 
-
+  
   initialState: {//estado inicial(string,numero,arreglo,obj etc)
     list: []
   },

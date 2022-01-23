@@ -1,57 +1,52 @@
 import React,{ useState,useEffect } from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { ReminderUI } from './helpers/reminder'
 import { getRimenders } from './Services/reminders.service'
-import {getReminders as getREmindersSelector} from './Services/reminders.reducer'
-//import {Addreminders} from './Services/reminders.reducer'
+import { getReminders as getREmindersSelector} from './Services/reminders.reducer'
+
+import {addTodo, completeToDo, deleteTodo} from './slice/reminders'
 
 
 function App() {
 
-  //ya no se ocupa useState porque vamos a utilizar redux
- // const [reminders,setReminders] = useState([""])
-
- //REDUX
- const reminders = useSelector(getREmindersSelector)//se importa useSelector de react-redux
+  
+ //const reminders = useSelector(getREmindersSelector)//se importa useSelector de react-redux
+ const reminders = useSelector(getREmindersSelector)
 
 
-  // useEffect(() => {//para treaer la api
-  //   //se ejecuta en dos condiciones 1.-alprincipio de la app 2.-cuando observe una variable
-  //   getRimenders().then((data)=> setReminders(data))
-  // },[])
 
-  //REDUX
   useEffect(()=>{
-    getRimenders() //nos ahorramos el .then(data ...)
+    getRimenders() 
 
   },[])
-  // useEffect(()=>{
+  
 
-  //    Addreminders()
-  //   console.log({reminders})
-  // },[])
+const dispatch = useDispatch()
 
-  const add = () =>{
-    // setReminders([...reminders,{title:`Reminders ${reminders.length + 1}`,id:reminders.length + 1}])
-    //...reminders apunta al mismo espacio de memoria,el valor puede ser diferente
-    //contiene lo que ya tenia el arreglo anterior pero ademas una nueva entrada ,sobreescribe el anterior
-   
-    console.log({reminders})
+
+   function addtoDo() {
+      dispatch(addTodo())
+   console.log("hola")
   }
 
+  const  deletetoDo = ()=>{
+    dispatch(deleteTodo())
+    console.log({deleteTodo})
+
+  }
+  
   return (
     < >
     <header className='header'>
       <h1 className='header-title'>My remenders</h1>
-      <button className='add-buton' onClick={add}>+</button>
-      <button className='add-buton' onClick={add}>-</button>
+      <button className='add-buton' onClick={addtoDo}>+</button>
+      <button className='add-buton' onClick={ deletetoDo}>-</button>
       </header>
     <main className='reminders'>
       <ul className='reminders-list'>
         {reminders.map((reminder)=> (
            <ReminderUI  key={`Reminder-${reminder.id}`} 
-           reminder={reminder} 
-           completed/>
+           reminder={reminder}/>
         ))}
       </ul>
     </main>  

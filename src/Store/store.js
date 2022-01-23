@@ -1,11 +1,9 @@
-import {combineReducers, createStore} from 'redux'
-import { todoReducer } from '../reducers/todoReducer'
+import {configureStore} from '@reduxjs/toolkit'
+import reminders from '../slice/reminders'
 
 
-//combineReducers
-const reducers = combineReducers({
-    //podemos añadir aqui nuestro nuevos reducers
-    addTodo:todoReducer
-    
+export const store = configureStore({
+    reducer:{
+        todo:reminders
+    }
 })
-export const store = createStore(reducers)//recibe nuestro reducer

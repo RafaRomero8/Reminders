@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { slice } from "../Services/reminders.reducer";
 import reducer from "./reducers";
 //reducer tiene adentro reminders del archivo reducer.jsx
 
 const store = configureStore({//configureStore recibe un objeto y debe tenr un atributo en este caso reducer
-  reducer,
+  reducer
 });
 
 export default store;
