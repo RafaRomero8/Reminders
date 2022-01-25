@@ -2,54 +2,85 @@ import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { ReminderUI } from './helpers/reminder'
 import { getRimenders } from './Services/reminders.service'
-import { getReminders as getREmindersSelector} from './Services/reminders.reducer'
-
-import {addTodo, completeToDo, deleteTodo} from './slice/reminders'
-
-
+import { Reminders,addTodo,add} from './Services/reminders.reducer'
+import menos from './assets/menos.png'
+import './App.css';
 function App() {
 
-  
- //const reminders = useSelector(getREmindersSelector)//se importa useSelector de react-redux
- const reminders = useSelector(getREmindersSelector)
 
-
+ //REDUX
+ const reminders = useSelector(Reminders)
+  // console.log(reminders)
+  // const añadir= useSelector(add)
 
   useEffect(()=>{
     getRimenders() 
 
   },[])
+
+
+  const [reminder,setreminder]=useState({
+      name:'',
+      title:'',
+  })
+   const {name, title}=reminder
+ 
+  //REDUX
   
+  useEffect(()=>{
+    console.log('hey')
+   
 
-const dispatch = useDispatch()
+  },[reminder])
+  
+ const inputChange=({target})=>{
+  //  console.log( e.target.name)
+  //  console.log( e.target.value)
+   setreminder({
+     ...reminder,
+     [target.name]:target.value
 
+   })
 
-   function addtoDo() {
-      dispatch(addTodo())
-   console.log("hola")
-  }
-
-  const  deletetoDo = ()=>{
-    dispatch(deleteTodo())
-    console.log({deleteTodo})
-
-  }
+ }
   
   return (
     < >
     <header className='header'>
       <h1 className='header-title'>My remenders</h1>
-      <button className='add-buton' onClick={addtoDo}>+</button>
-      <button className='add-buton' onClick={ deletetoDo}>-</button>
-      </header>
-    <main className='reminders'>
-      <ul className='reminders-list'>
+      <input type='text'
+       name='name' 
+      placeholder='add reinder' 
+      autoComplete='off'
+      value={name}
+      onChange={inputChange}></input>
+
+       <button className='add-buton' >+</button> 
+      
+      {/* <button className='add-buton' onClick={add}>-</button>
+      */}
+    
+ </header>
+    <div className='row'>
+      
+      <div className='col-7'>
+      <main className='reminders'>
+      <ul className='list-group list-group-flush'>
         {reminders.map((reminder)=> (
            <ReminderUI  key={`Reminder-${reminder.id}`} 
-           reminder={reminder}/>
+           reminder={reminder} 
+           completed/>
         ))}
       </ul>
     </main>  
+    
+
+      </div>
+      <div className='col-5'>
+      <img className='delete' src={menos} alt="delete"/> 
+      </div>
+
+  </div>
     </>
   )
 }

@@ -5,7 +5,12 @@ export const slice = createSlice({
   name: "reminders", //objeto 
 
   initialState: {//estado inicial(string,numero,arreglo,obj etc)
-    list: []
+    list: [{
+      completed: true,
+        id: 202,
+         title: "consequuntur aut ut fugit si",
+         userId: 323
+    }]
   },
 
   reducers: {
@@ -39,4 +44,5 @@ export const { setReminders,addTodo,deleteTodo,completeToDo} = slice.actions;
 export default slice.reducer;//exportar como default nuestro reducer para que la ocupa para crear nuestra store de toda la aplicacion
 
 // Selector para oocuparlo en el hook
-export const getReminders = (store) => store.reminders.list;//
+export const Reminders = (store) => store.reminders.list;//
+ export const add = (store) => store.reminders.addTodo;

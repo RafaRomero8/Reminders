@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #1e3163;
+  background-color: #ffe162;
 }
 
 /* html {
@@ -51,10 +51,15 @@ body {
 
 .reminders-list-element {
   list-style: none;
-  background-color: #002366;
+  background-color: #f9f9f9;
   border-radius: 5px;
-  color: white;
-  border: solid 1px white;
+  color: #41444b;
+  border: solid 1px #52575d;
   padding: clamp(5px, 1vw, 25px);
   width: clamp(110px, 4vw, 300px);
+}
+
+.delete {
+  width: 30px;
+  height: 30px;
 }

@@ -1,5 +1,7 @@
 import '../App.css';
 
+
+
 export function ReminderUI({reminder}) {
   const {completed,id,title,userId} = reminder
   return(
@@ -8,9 +10,8 @@ export function ReminderUI({reminder}) {
          <p>
            {title} {completed? <span>;)</span>:<></>}
          </p>
-         
+        
      </li>
+      
   ) 
 }
-
-
