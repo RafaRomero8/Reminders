@@ -9,6 +9,9 @@ import paloma from './assets/paloma.svg'
 import { reducers} from './Services/reducers';
 import './App.css';
 import { useForm } from './useForm'
+import { Tasktodo  } from './task'
+
+
 function App() {
 
 
@@ -29,7 +32,8 @@ const [todos,dispatch]=useReducer( reducers,[])
 
 
 const [{description},handelInputChange,reset]=useForm({
-  description:'' //agregar reminders
+  description:'', //agregar reminders
+
 })
 
 
@@ -47,9 +51,10 @@ const [{description},handelInputChange,reset]=useForm({
    //console.log("new todo")
    
    const newTodo = {
+    userId:new Date().getTime(),
     id:new Date().getTime(),
-    desc:description,
-    done:false
+    title:description,
+    complete:false
    }
    const action={
      type:'add',
@@ -78,19 +83,38 @@ const completeTodo = (todoId)=>{
     payload:todoId
   }
   dispatch(action)
-    
-
-
 }
 
+const taskTodo = (complete)=>{
+  console.log(complete)
+  const action={
+    type:'showtodo',
+    payload:complete
+  }
+  dispatch(action)
+}
+
+
+
+// const showcompleteTodo= (event)=>{
+//   // const filtro = event.target.text
+//   // console.log(filtro)
+//    for(const elemento of todos){
+//             console.log(elemento)
+
+//    }
+  
+// }
  //--------------------------------------------------------------- 
   return (
     < >
     <header className='header'>
-      <h1 className='header-title'>My remenders -{todos.length}</h1>
-      <form onSubmit={addNewTodo}>
+      <h1 className='header-title'>My remenders{todos.length} </h1>
+      {/* <h2>{todos.filter(t=> !t.complete).length} - task to do</h2>  */}
+      <Tasktodo task={todos}/>
+      <form className='form' onSubmit={addNewTodo}>
 
-      <input type='text'
+      <input className='form-input' type='text'
        name='description' 
       placeholder='add reminder' 
       autoComplete='off'
@@ -105,39 +129,34 @@ const completeTodo = (todoId)=>{
       
     
  </header>
-    <div className='row'>
+    
       
-      <div className='col-7'>
+      
       <main className='reminders'>
-        <ul className='list-group list-group-flush'>
+        <ul className='reminders-list'>
         {
        todos.map((todo,i)=>(
-         <li className="reminders-list-element" key={todo.id}><p  className={`${ todo.done && 'complete'}`}>{i+1}.-{todo.desc}</p>
+         <li className="reminders-list-element" key={todo.id}><p  className={`${ todo.complete && 'complete'}`}>{i+1}.-{todo.title}</p>
+          <p></p>
          <button className='add-buton' onClick={()=>deleteTodo(todo.id)}> <img className='delete' src={menos} alt="delete"/> </button>
           <button className='add-buton' onClick={()=>completeTodo(todo.id)}><img className='delete' src={paloma}></img></button>        
          </li>
        ))
      }
-     
-            
+        
         </ul>
-      <ul className='list-group list-group-flush'>
+      {/* <ul className='list-group list-group-flush'>
         {reminders.map((reminder,todo)=> (
            <ReminderUI  key={`Reminder-${reminder.id} ${todo.id}`} 
            reminder={reminder} 
     
            completed/>
         ))}
-      </ul>
+      </ul> */}
     </main>  
     
-
-      </div>
-      <div className='col-5'>
-     
-      </div>
-
-  </div>
+    
+    
     </>
   )
 }

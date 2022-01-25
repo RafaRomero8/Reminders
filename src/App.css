@@ -22,7 +22,9 @@ body {
   color: aliceblue;
   font-size: clamp(30px, 10vw, 55px);
 }
-
+.form {
+  display: flex;
+}
 .add-buton {
   background-color: whitesmoke;
   border: none;
@@ -64,5 +66,10 @@ body {
   height: 30px;
 }
 .complete {
+  /*  completados */
   text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
 }
