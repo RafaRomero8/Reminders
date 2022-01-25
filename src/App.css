@@ -63,3 +63,6 @@ body {
   width: 30px;
   height: 30px;
 }
+.complete {
+  text-decoration: line-through;
+}

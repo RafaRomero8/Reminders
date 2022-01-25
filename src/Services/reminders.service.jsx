@@ -9,7 +9,7 @@ export async function getRimenders(){
 
     try {
        const {data}  = await axios.get(url) 
-       console.log(data)
+    //    console.log(data)
       // let pos = 0
        //store.dispatch(setReminders(data.splice(pos,5))) 
        store.dispatch(setReminders(data.slice(-5)) )
