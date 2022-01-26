@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 
 export const TodoRow = props => (
-   <tr key={props.task.title} >
-       <td>{props.task.title}</td>
-   </tr>
+   <p key={props.task.title} >
+       {props.task.title}
+   </p>
 );
