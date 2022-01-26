@@ -1,9 +1,8 @@
 import React from 'react';
-import { useForm } from './useForm';
-import mas from './assets/mas.png'
+import { useForm } from '../useForm.jsx';
+import mas from '../assets/mas.png'
 
 export const RemindersAdd = ({AddToDo}) => {
-
 
     const [{description},handelInputChange,reset]=useForm({
         description:'', //agregar reminders

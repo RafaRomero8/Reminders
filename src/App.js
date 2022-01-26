@@ -1,20 +1,19 @@
 import React,{ useState,useEffect, useReducer } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+//import {useDispatch, useSelector} from 'react-redux'
 //import { ReminderUI } from './helpers/reminder'
 //import { getRimenders } from './Services/reminders.service'
 //import { Reminders,addTodo,add} from './Services/reminders.reducer'
-
 import { reducers} from './Services/reducers';
-import { Tasktodo  } from './task'
-import { ShowComponents } from './Show-components'
-import { TodoRow } from './helpers/TodoRow'
-import { RemindersAdd } from './RemindersAdd'
+import { Tasktodo  } from './components/task'
+import { ShowComponents } from './components/Show-components'
+import { TodoRow } from './components/TodoRow'
+import { RemindersAdd } from './components/RemindersAdd'
 import './App.css';
-import { Todolist } from './Todolist';
+
+import { TodoListul } from './components/TodoListul';
 //import imgs from './assets'
 
 function App() {
-
 
  //REDUX
 //  const reminders = useSelector(Reminders)
@@ -26,8 +25,6 @@ function App() {
 
 //   },[])
 //--------------------------------------------------------------------------
-
-
 const [todos,dispatch]=useReducer( reducers,[])
 const [show,showState]=useState(true)
  
@@ -78,12 +75,9 @@ const taskTodo = (completetask)=>(
       <h1 className='header-title'>My remenders{todos.length} </h1>
 
       <Tasktodo task={todos}/>
-    
       <RemindersAdd AddToDo={AddToDo}/>
-      
-  
        <div className=''> 
-       <ShowComponents 
+        <ShowComponents 
             description="Complete Tasks"
             isChecked={show}
             callback={checked =>showState(checked) }      
@@ -100,17 +94,11 @@ const taskTodo = (completetask)=>(
  </header>
      
       <main className='reminders'>
-        <ul className='reminders-list'>
-        {
-       todos.map((todo,i)=>(
-        <Todolist key={todo.id}
-        todo={todo}
-        index={i}
-        deleteTodo={ completeTodo}
-        deleteTodo ={deleteTodo}/>
-       ))
-     } 
-        </ul>
+      <TodoListul
+      todos={todos}
+      deleteTodo={deleteTodo}
+      completeTodo={completeTodo}/>
+        
 
       {/* <ul className='list-group list-group-flush'>
         {reminders.map((reminder,todo)=> (

@@ -1,6 +1,7 @@
 import React from 'react';
-import menos from './assets/menos.png'
-import paloma from './assets/paloma.svg'
+import menos from '../assets/menos.png'
+import paloma from '../assets/paloma.svg'
+import '../App.css'
 
 export const Todolist = ({todo,index,completeTodo,deleteTodo}) => {
   return <li
