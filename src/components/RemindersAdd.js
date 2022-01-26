@@ -1,6 +1,7 @@
 import React from 'react';
-import { useForm } from '../useForm.jsx';
+import { useForm } from '../helpers/useForm.jsx';
 import mas from '../assets/mas.png'
+import paloma from '../assets/paloma.svg'
 
 export const RemindersAdd = ({AddToDo}) => {
 
@@ -35,13 +36,13 @@ export const RemindersAdd = ({AddToDo}) => {
 
           <input className='form-input' type='text'
                  name='description' 
-                  placeholder='add reminder' 
+                  placeholder='  add reminder...' 
                    autoComplete='off'
                     value={description}
                       onChange={handelInputChange}>
          </input>
 
- <button type='submit'  ><img className='delete' src={mas}></img></button> 
+ <button type='submit' className='form-button'  ><img className='delete' src={mas}></img></button> 
 
  </form>
   </>;

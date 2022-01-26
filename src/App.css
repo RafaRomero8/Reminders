@@ -5,8 +5,11 @@
 }
 
 body {
-  background-color: #ffe162;
+  background-image: linear-gradient(90deg, #9d0b28, #c70039, #af0404, #ff0000);
+  background-size: 500%;
 }
+/* ff0000 
+c70039*/
 
 /* html {
   font-size: 62.5%;
@@ -16,17 +19,38 @@ body {
 .header {
   margin: 2em 1em 1em 1em;
 }
-
+.header-div {
+  display: flex;
+  border: solid 1px aliceblue;
+  border-radius: 10px;
+  justify-content: center;
+}
+.header-task {
+  display: flex;
+  border: solid 1px aliceblue;
+  border-radius: 10px;
+  justify-content: center;
+  margin: 0 50px;
+  margin-top: 20px;
+}
 .header-title {
   margin: 0;
   color: aliceblue;
   font-size: clamp(30px, 10vw, 55px);
 }
+
 .form {
   display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.form-button {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: center;
 }
 .add-buton {
-  background-color: whitesmoke;
   border: none;
   opacity: 80%;
   border-radius: 50px;
@@ -37,6 +61,20 @@ body {
 }
 .add-buton:hover {
   cursor: pointer;
+}
+.form-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Muli", sans-serif;
+  height: 50px;
+  width: 290px;
+  letter-spacing: 1px; /*lo separa */
+  margin: 10px 0px;
+  margin-right: 5px;
 }
 .reminders {
   margin-top: 10px;
@@ -62,8 +100,8 @@ body {
 }
 
 .delete {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 .complete {
   /*  completados */

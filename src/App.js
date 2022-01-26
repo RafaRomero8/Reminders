@@ -8,9 +8,8 @@ import { Tasktodo  } from './components/task'
 import { ShowComponents } from './components/Show-components'
 import { TodoRow } from './components/TodoRow'
 import { RemindersAdd } from './components/RemindersAdd'
-import './App.css';
-
 import { TodoListul } from './components/TodoListul';
+import './App.css';
 //import imgs from './assets'
 
 function App() {
@@ -71,10 +70,13 @@ const taskTodo = (completetask)=>(
   return (
     < >
     <header className='header'>
-      
-      <h1 className='header-title'>My remenders{todos.length} </h1>
-
+      <div className='header-div'>
+      <h1 className='header-title'>Todos: {todos.length} </h1>
+      </div>
+      <div className='header-task'>
       <Tasktodo task={todos}/>
+      </div>
+      
       <RemindersAdd AddToDo={AddToDo}/>
        <div className=''> 
         <ShowComponents 
@@ -99,7 +101,6 @@ const taskTodo = (completetask)=>(
       deleteTodo={deleteTodo}
       completeTodo={completeTodo}/>
         
-
       {/* <ul className='list-group list-group-flush'>
         {reminders.map((reminder,todo)=> (
            <ReminderUI  key={`Reminder-${reminder.id} ${todo.id}`} 
