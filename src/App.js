@@ -10,7 +10,9 @@ import { reducers} from './Services/reducers';
 import './App.css';
 import { useForm } from './useForm'
 import { Tasktodo  } from './task'
-
+import { ShowComponents } from './Show-components'
+import { TodoRow } from './helpers/TodoRow'
+//import imgs from './assets'
 
 function App() {
 
@@ -29,7 +31,7 @@ function App() {
 
 const [todos,dispatch]=useReducer( reducers,[])
 
-
+const [show,showState]=useState(true)
 
 const [{description},handelInputChange,reset]=useForm({
   description:'', //agregar reminders
@@ -85,26 +87,15 @@ const completeTodo = (todoId)=>{
   dispatch(action)
 }
 
-const taskTodo = (complete)=>{
-  console.log(complete)
-  const action={
-    type:'showtodo',
-    payload:complete
-  }
-  dispatch(action)
-}
+const taskTodo = (completetask)=>(
+
+    todos.filter(task=>task.complete===completetask )
+    .map(task=>(
+      <TodoRow task={task} key={task.id} />     
+    ))
+)
 
 
-
-// const showcompleteTodo= (event)=>{
-//   // const filtro = event.target.text
-//   // console.log(filtro)
-//    for(const elemento of todos){
-//             console.log(elemento)
-
-//    }
-  
-// }
  //--------------------------------------------------------------- 
   return (
     < >
@@ -112,6 +103,10 @@ const taskTodo = (complete)=>{
       <h1 className='header-title'>My remenders{todos.length} </h1>
       {/* <h2>{todos.filter(t=> !t.complete).length} - task to do</h2>  */}
       <Tasktodo task={todos}/>
+      <p>
+        {taskTodo()}
+      </p>
+      
       <form className='form' onSubmit={addNewTodo}>
 
       <input className='form-input' type='text'
@@ -125,19 +120,38 @@ const taskTodo = (complete)=>{
        <button type='submit'  ><img className='delete' src={mas}></img></button> 
    
        </form>
-       
+       <div> <ShowComponents description="Complete Tasks"
+            isChecked={show}
+            callback={checked =>showState(checked) }      
+        />
+
+        </div>
+        {/* para mostrar tareas  cmpletadas */}
+      {
+        show &&(
+          <table className=''>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              {taskTodo(true) }
+            </tbody>
+
+          </table>
+        )
+      }
       
     
  </header>
-    
-      
-      
+     
       <main className='reminders'>
         <ul className='reminders-list'>
         {
        todos.map((todo,i)=>(
          <li className="reminders-list-element" key={todo.id}><p  className={`${ todo.complete && 'complete'}`}>{i+1}.-{todo.title}</p>
-          <p></p>
          <button className='add-buton' onClick={()=>deleteTodo(todo.id)}> <img className='delete' src={menos} alt="delete"/> </button>
           <button className='add-buton' onClick={()=>completeTodo(todo.id)}><img className='delete' src={paloma}></img></button>        
          </li>
