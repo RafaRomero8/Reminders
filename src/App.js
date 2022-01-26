@@ -69,6 +69,7 @@ const taskTodo = (completetask)=>(
  //--------------------------------------------------------------- 
   return (
     < >
+    
     <header className='header'>
       <div className='header-div'>
       <h1 className='header-title'>Todos: {todos.length} </h1>
@@ -88,8 +89,8 @@ const taskTodo = (completetask)=>(
 
         {/* para mostrar tareas  cmpletadas */}
         <div className='show-task'>
-        {
-          show &&(  <ul className='show-list'><li className='show-taske-element'>{taskTodo(true) } {taskTodo()}</li>  </ul>)
+          {
+                  show &&(  <ul className='show-list'><li className='show-taske-element'>{taskTodo(true) } {taskTodo()}</li>  </ul>)
          }
         </div>
      
@@ -109,7 +110,8 @@ const taskTodo = (completetask)=>(
            completed/>
         ))}
       </ul> */}
-    </main>     
+    </main> 
+       
     </>
   )
 }

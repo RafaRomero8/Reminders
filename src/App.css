@@ -5,8 +5,7 @@
 }
 
 body {
-  background-image: linear-gradient(90deg, #9d0b28, #c70039, #af0404, #ff0000);
-  background-size: 500%;
+  background: linear-gradient(to left, #9d0b28, #ff0000);
 }
 /* ff0000 
 c70039*/
@@ -16,6 +15,7 @@ c70039*/
   font-family: "DM Sans", sans-serif; 
 } 
  */
+
 .header {
   margin: 3em 1em 1em 1em;
 }
@@ -67,9 +67,10 @@ c70039*/
   font-size: 1.3rem;
   font-weight: bold;
   font-family: "Muli", sans-serif;
+  color: #f9f9f9;
   height: 50px;
   width: 290px;
-  letter-spacing: 1px; /*lo separa */
+  letter-spacing: 2px; /*lo separa */
   margin: 10px 0px;
   margin-right: 5px;
 }
@@ -87,9 +88,9 @@ c70039*/
 
 .reminders-list-element {
   list-style: none;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  color: #41444b;
+  color: #f9f9f9;
   justify-content: center;
   border: solid 1px red;
   padding: clamp(5px, 1vw, 25px);
@@ -130,9 +131,9 @@ c70039*/
 
 .show-list {
   list-style: none;
-  background-color: #f9f9f9;
+  color: #f9f9f9;
   border-radius: 5px;
-  color: #41444b;
+  font-weight: bold;
   border: solid 1px red;
   padding: clamp(5px, 1vw, 25px);
   width: clamp(200px, 4vw, 300px);
