@@ -42,7 +42,7 @@ export const RemindersAdd = ({AddToDo}) => {
                       onChange={handelInputChange}>
          </input>
 
- <button type='submit' className='form-button'  ><img className='delete' src={mas}></img></button> 
+ <button type='submit' className='form-button'  ><img className='add' src={mas}></img></button> 
 
  </form>
   </>;

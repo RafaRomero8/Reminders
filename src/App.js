@@ -78,7 +78,7 @@ const taskTodo = (completetask)=>(
       </div>
       
       <RemindersAdd AddToDo={AddToDo}/>
-       <div className=''> 
+       <div className='ShowComponents '> 
         <ShowComponents 
             description="Complete Tasks"
             isChecked={show}
@@ -89,7 +89,7 @@ const taskTodo = (completetask)=>(
         {/* para mostrar tareas  cmpletadas */}
         <div className='show-task'>
         {
-          show &&(  <ul>  {taskTodo(true) } {taskTodo()} </ul>)
+          show &&(  <ul className='show-list'><li className='show-taske-element'>{taskTodo(true) } {taskTodo()}</li>  </ul>)
          }
         </div>
      

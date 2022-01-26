@@ -17,7 +17,7 @@ c70039*/
 } 
  */
 .header {
-  margin: 2em 1em 1em 1em;
+  margin: 3em 1em 1em 1em;
 }
 .header-div {
   display: flex;
@@ -44,21 +44,18 @@ c70039*/
   justify-content: center;
   margin-top: 20px;
 }
-.form-button {
+.form-button,
+.add-buton {
   text-decoration: none;
   border: none;
   cursor: pointer;
   background: center;
 }
-.add-buton {
-  border: none;
-  opacity: 80%;
-  border-radius: 50px;
-  padding: 0.3em 0.65em;
-  font-size: 24px;
-  font-weight: 800;
-  justify-content: center;
+.add {
+  width: 40px;
+  height: 40px;
 }
+
 .add-buton:hover {
   cursor: pointer;
 }
@@ -79,7 +76,6 @@ c70039*/
 .reminders {
   margin-top: 10px;
   display: flex;
-  justify-content: center;
 }
 .reminders-list {
   display: flex;
@@ -94,20 +90,57 @@ c70039*/
   background-color: #f9f9f9;
   border-radius: 5px;
   color: #41444b;
-  border: solid 1px #52575d;
+  justify-content: center;
+  border: solid 1px red;
   padding: clamp(5px, 1vw, 25px);
-  width: clamp(110px, 4vw, 300px);
+  width: clamp(150px, 8vw, 300px);
 }
 
-.delete {
-  width: 40px;
-  height: 40px;
+.delete,
+.complete {
+  width: 30px;
+  height: 30px;
 }
 .complete {
   /*  completados */
   text-decoration: line-through;
 }
+.ShowComponents,
+.div-input {
+  display: flex;
+  justify-content: center;
+}
+.input-label {
+  color: white;
+  padding-left: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-.hidden {
-  display: none;
+/* ----- */
+.input {
+  width: 25px;
+  height: 25px;
+}
+.show-task,
+.show-list {
+  display: flex;
+  justify-content: center;
+}
+
+.show-list {
+  list-style: none;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  color: #41444b;
+  border: solid 1px red;
+  padding: clamp(5px, 1vw, 25px);
+  width: clamp(200px, 4vw, 300px);
+}
+.reminders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-evenly;
+  width: 100%;
 }
