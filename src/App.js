@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getRimenders } from './Services/reminders.service'
-import { Reminders,addTodo,removeTodo,completeToDo, editReminders} from './Services/reminders.reducer'
+import { Reminders,addTodo,removeTodo,completeToDo} from './Services/reminders.reducer'
 //----------------------------------------------------------------
 import { Tasktodo  } from './components/task'
 import { ShowComponents } from './components/Show-components'
@@ -9,6 +9,7 @@ import { TodoRow } from './components/TodoRow'
 import { RemindersAdd } from './components/RemindersAdd'
 import { TodoListul } from './components/TodoListul';
 import './App.css';
+
 //import imgs from './assets'
 
 function App() {
@@ -63,10 +64,7 @@ const taskTodo = (completetask)=>(
 //---------------------------eidt-------------------
 
 
-const aditTask =(newTodo)=>{
-  dispatch(editReminders(newTodo))
-  console.log(newTodo)
-}
+
  //--------------------------------------------------------------- 
   return (
     < >
@@ -103,9 +101,10 @@ const aditTask =(newTodo)=>{
       reminders={reminders}
       deleteTodo={deleAsk}
       completeTodo={completeAsk }
-      editTodo={ aditTask}/>     
+     />  
+     
     </main> 
-       
+   
     </>
   )
 }

@@ -36,9 +36,10 @@ export const slice = createSlice({
              : todo
            )
         }),
-        editReminders: (state, {payload:todoTitle})=>({
+        editReminders: (state, {payload:todoid})=>({
+          ...state,
           list: state.list
-          .map(item => item.title === todoTitle ?(todoTitle):item)
+          .map(e => (e.id === todoid) ?(todoid):e)
          
         }),
       

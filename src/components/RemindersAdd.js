@@ -8,10 +8,12 @@ export const RemindersAdd = ({AddToDo}) => {
         description:'', //agregar reminders
       })
       //--------add-------------------------------------
+      
  const addNewTodo =(e)=>{
     e.preventDefault()
     //console.log("new todo")
     if(description.trim().length <=1){return}
+
     
     const newTodo = {
      userId:new Date().getTime(),
