@@ -2,18 +2,20 @@ import React from 'react';
 import { Todolist } from './Todolist';
 
 
-export const TodoListul = ({todos,completeTodo,deleteTodo}) => {
+export const TodoListul = ({reminders,completeTodo,deleteTodo,editTodo}) => {
   return <>
        <ul className='reminders-list'>
         {
-       todos.map((todo,i)=>(
-        <Todolist key={todo.id}
+          reminders.map((todo,i)=>(
+         <Todolist key={todo.id}
            todo={todo}
           index={i}
           completeTodo={ completeTodo}
-          deleteTodo ={deleteTodo}/>
+          deleteTodo ={deleteTodo}
+          editTodo={editTodo}/>
        ))
      } 
         </ul>
+        
   </>;
 };

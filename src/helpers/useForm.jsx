@@ -17,6 +17,7 @@ export const useForm = (initialState = {}) => { //nuestro estado inicial sera un
         })
     }
 
+    
     return [values,handelInputChange,reset]//podemos regresarlo como un arreglo,o como un obeto dependiendo de lo que se requiera 
     //se regresa el estado del formulario(values) y el segundo handelInputChange
     

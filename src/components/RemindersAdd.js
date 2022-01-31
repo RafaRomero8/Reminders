@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from '../helpers/useForm.jsx';
-import mas from '../assets/mas.png'
-import paloma from '../assets/paloma.svg'
+import mas from '../assets/add-circle-plus.svg'
 
 export const RemindersAdd = ({AddToDo}) => {
 
@@ -12,6 +11,7 @@ export const RemindersAdd = ({AddToDo}) => {
  const addNewTodo =(e)=>{
     e.preventDefault()
     //console.log("new todo")
+    if(description.trim().length <=1){return}
     
     const newTodo = {
      userId:new Date().getTime(),
@@ -24,6 +24,7 @@ export const RemindersAdd = ({AddToDo}) => {
     //   payload:newTodo
     // }
     // dispatch(action)
+   
     AddToDo(newTodo)
       reset()//resetear la entrada
   }

@@ -9,10 +9,20 @@ export async function getRimenders(){
 
     try {
        const {data}  = await axios.get(url) 
-    //    console.log(data)
+     
       // let pos = 0
-       //store.dispatch(setReminders(data.splice(pos,5))) 
-       store.dispatch(setReminders(data.slice(-5)) )
+       //store.dispatch(setReminders(data.slice(0,5)) )
+      store.dispatch(setReminders(data.filter(user=>user.id<=5)) )
+     // const result = data.filter(word => word.length < 6);
+      //store.dispatch(setReminders(result ))
+      
+   //    store.dispatch(setReminders(data.map( todo => {
+   //       if(todo.id <= 5){
+   //           return{
+   //               ...todo
+   //           } 
+   //          }
+   //   })))
 
        return data
 

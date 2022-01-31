@@ -1,9 +1,8 @@
-import React,{ useState,useEffect, useReducer } from 'react'
-//import {useDispatch, useSelector} from 'react-redux'
-//import { ReminderUI } from './helpers/reminder'
-//import { getRimenders } from './Services/reminders.service'
-//import { Reminders,addTodo,add} from './Services/reminders.reducer'
-import { reducers} from './Services/reducers';
+import React,{ useState,useEffect } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { getRimenders } from './Services/reminders.service'
+import { Reminders,addTodo,removeTodo,completeToDo, editReminders} from './Services/reminders.reducer'
+//----------------------------------------------------------------
 import { Tasktodo  } from './components/task'
 import { ShowComponents } from './components/Show-components'
 import { TodoRow } from './components/TodoRow'
@@ -15,70 +14,73 @@ import './App.css';
 function App() {
 
  //REDUX
-//  const reminders = useSelector(Reminders)
-//   // console.log(reminders)
-//   // const añadir= useSelector(add)
+ const reminders = useSelector(Reminders)
+ const dispatch= useDispatch();
+  // console.log(reminders)
+  // const añadir= useSelector(add)
 
-//   useEffect(()=>{
-//     getRimenders() 
+  useEffect(()=>{
+    getRimenders() 
 
-//   },[])
+  },[])
+
 //--------------------------------------------------------------------------
-const [todos,dispatch]=useReducer( reducers,[])
+//const [todos,dispatch]=useReducer( reducers,[])
 const [show,showState]=useState(true)
+
  
   useEffect(()=>{
      
-  },[todos])
+  },[reminders])
   
  //--------add-------------------------------------
-
-const AddToDo = (newTodo)=>{
-  dispatch(     { //accion para mandar al reducer
-      type:'add',
-      payload:newTodo
-  })
-}
- //---------------delete-----------------------------------
- const deleteTodo =(todoId)=>{
+const add = (newTodo) =>{
   
-  console.log(todoId)
-  const action={
-    type:'delete',
-    payload:todoId
-  }
-  dispatch(action)
+  dispatch(addTodo(newTodo))
+  console.log({reminders})
+}
+
+ //---------------delete-----------------------------------
+ const deleAsk =(newTodo)=>{
+  
+  dispatch(removeTodo(newTodo))
+  console.log(newTodo) 
 }
 //---------------marcar task como completado------------------- 
-const completeTodo = (todoId)=>{
-  console.log(todoId)
-  const action={
-    type:'complete',
-    payload:todoId
-  }
-  dispatch(action)
+const completeAsk  = (newTodo)=>{
+
+  dispatch(completeToDo(newTodo))
+  console.log(newTodo)
 }
 //-----------------show on a component <p></p>---------------------
 const taskTodo = (completetask)=>(
-    todos.filter(task=>task.complete===completetask )
+
+    reminders.filter(task=>task.complete===completetask )
     .map(task=>(
       <TodoRow task={task} key={task.id} />     
     ))
 )
+//---------------------------eidt-------------------
 
+
+const aditTask =(newTodo)=>{
+  dispatch(editReminders(newTodo))
+  console.log(newTodo)
+}
  //--------------------------------------------------------------- 
   return (
     < >
     
     <header className='header'>
       <div className='header-div'>
-      <h1 className='header-title'>Todos: {todos.length} </h1>
+      <h1 className='header-title'>Todos: {reminders.length} </h1>
       </div>
-      <div className='header-task'>
-      <Tasktodo task={todos}/>
+      <div className='header-task'> 
+      <Tasktodo task={reminders}/>
       </div>
       
-      <RemindersAdd AddToDo={AddToDo}/>
+      <RemindersAdd  AddToDo={add}/>
+     
        <div className='ShowComponents '> 
         <ShowComponents 
             description="Complete Tasks"
@@ -90,7 +92,7 @@ const taskTodo = (completetask)=>(
         {/* para mostrar tareas  cmpletadas */}
         <div className='show-task'>
           {
-                  show &&(  <ul className='show-list'><li className='show-taske-element'>{taskTodo(true) } {taskTodo()}</li>  </ul>)
+                  show &&(  <ul className='show-list'><li className='show-taske-element'>{taskTodo(true) } </li>  </ul>)
          }
         </div>
      
@@ -98,18 +100,10 @@ const taskTodo = (completetask)=>(
      
       <main className='reminders'>
       <TodoListul
-      todos={todos}
-      deleteTodo={deleteTodo}
-      completeTodo={completeTodo}/>
-        
-      {/* <ul className='list-group list-group-flush'>
-        {reminders.map((reminder,todo)=> (
-           <ReminderUI  key={`Reminder-${reminder.id} ${todo.id}`} 
-           reminder={reminder} 
-    
-           completed/>
-        ))}
-      </ul> */}
+      reminders={reminders}
+      deleteTodo={deleAsk}
+      completeTodo={completeAsk }
+      editTodo={ aditTask}/>     
     </main> 
        
     </>
