@@ -28,14 +28,14 @@ export const slice = createSlice({
       }),
 
       completeToDo:(state,{ payload: todoId})=>({
-        
-        
         list:state.list
         .map( todo => (todo.id === todoId)
             ?{...todo,complete: !todo.complete}
              : todo
            )
         }),
+
+
         editReminders: (state, {payload:todoid})=>({
           ...state,
           list: state.list
